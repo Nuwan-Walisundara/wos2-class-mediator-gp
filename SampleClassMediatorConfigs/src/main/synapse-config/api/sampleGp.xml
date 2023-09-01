@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/gp" name="sampleGp" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST">
+        <inSequence>
+            <log level="full"/>
+            <class name="grouping.GroupBy"/>
+            <payloadFactory media-type="json">
+                <format>
+                     $1
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('enriched_context')"/>
+                </args>
+            </payloadFactory>
+            <log>
+                <property name="WHERE" value="before doing stuff"/>
+                <property expression="get-property('enriched_context')" name="ENRICH_PROPERTY"/>
+            </log>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

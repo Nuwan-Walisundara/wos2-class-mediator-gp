@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: sampleGp
+  description: API Definition of sampleGp
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/gp
+paths:
+  /:
+    post:
+      responses:
+        default:
+          description: Default response
